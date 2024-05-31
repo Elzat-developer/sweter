@@ -22,7 +22,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/","/registration").permitAll()
+                        .requestMatchers("/","/registration","/login").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
@@ -34,14 +34,13 @@ public class WebSecurityConfig {
         return http.build();
     }
     @Autowired
-    protected AuthenticationManagerBuilder configure(AuthenticationManagerBuilder auth) throws Exception{
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(userService)
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
         /*.usersByUsernameQuery("select username, password, active from users where username=?")
                 .authoritiesByUsernameQuery("select u.username, ur.roles from" +
                         " users u inner join user_role ur on" +
                         " u.id = ur.user_id where u.username=?")*/
-        return auth;
     }
 
 }
