@@ -5,12 +5,19 @@
         <input type="text" name="username" class="form-control"/>
       </label>
     </div>
+
     <div class="mb-3">
       <label class="form-label"> Password:
         <input type="password" name="password" class="form-control"/>
       </label>
     </div>
-
+    <#if isRegisterForm>
+    <div class="mb-3">
+      <label class="form-label"> Email:
+        <input type="email" name="email" class="form-control"/>
+      </label>
+    </div>
+    </#if>
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
 
     <div>
