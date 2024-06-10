@@ -1,37 +1,105 @@
 <#import "parts/common.ftl" as c>
-<#import "parts/login.ftl" as l>
+
 <@c.page>
-<div>
-    <@l.logout/>
-    <span><a href="/user">User List</a></span>
-</div>
-    <div>
-        <form method="post" enctype="multipart/form-data">
-            <input type="text" name="text" placeholder="Enter your message(English)">
-            <input type="text" name="tag" placeholder="Tag">
-            <input type="file" name="file">
-            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-            <button type="submit">Action</button>
-        </form>
+    <div class="row g-3">
+        <div class="col-12">
+            <form method="get" action="/main" >
+                <input  type="text" name="filter" value="${filter?if_exists}">
+                <button type="submit" class="btn btn-primary">find</button>
+            </form>
+        </div>
     </div>
-    <div>List message</div>
-    <form method="get" action="/main">
-        <input type="text" name="filter" value="${filter?if_exists}">
-        <button type="submit">find</button>
-    </form>
+
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Add new message
+    </a>
+
+    <div class="collapse" id="collapseExample">
+        <div class="mb-3 mt-3">
+            <form method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="text" placeholder="Enter your message(English)">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control"name="tag" placeholder="Tag">
+                    </div>
+                    <div>
+                        <input type="file" class="form-control" name="file" id="formFile">
+                        <label for="formFile" class="form-label"></label>
+                    </div>
+                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                     <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Action</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <#assign column1 = []>
+        <#assign column2 = []>
+        <#assign column3 = []>
+
         <#list messages as message>
-            <div>
-                <b>${message.id}</b>
-                <span>${message.text}</span>
-                <i>${message.tag}</i>
-                <strong>${message.authorName}</strong>
-                <div>
-                    <#if message.filename??>
-                        <img src="/img/${message.filename}">
-                    </#if>
-                </div>
-            </div>
+            <#if message_index % 3 == 0>
+                <#assign column1 = column1 + [message]>
+            <#elseif message_index % 3 == 1>
+                <#assign column2 = column2 + [message]>
             <#else>
-            No Messages!
+                <#assign column3 = column3 + [message]>
+            </#if>
         </#list>
+
+        <div class="col">
+            <#list column1 as message>
+                <div class="card my-3" style="width: 18rem;">
+                    <#if message.filename??>
+                        <img src="/img/${message.filename}" class="card-img-top">
+                    </#if>
+                    <div class="m-2">
+                        <span>${message.text}</span>
+                        <i>${message.tag}</i>
+                    </div>
+                    <div class="card-footer">
+                        ${message.authorName}
+                    </div>
+                </div>
+            </#list>
+        </div>
+
+        <div class="col">
+            <#list column2 as message>
+                <div class="card my-3" style="width: 18rem;">
+                    <#if message.filename??>
+                        <img src="/img/${message.filename}" class="card-img-top">
+                    </#if>
+                    <div class="m-2">
+                        <span>${message.text}</span>
+                        <i>${message.tag}</i>
+                    </div>
+                    <div class="card-footer">
+                        ${message.authorName}
+                    </div>
+                </div>
+            </#list>
+        </div>
+
+        <div class="col">
+            <#list column3 as message>
+                <div class="card my-3" style="width: 18rem;">
+                    <#if message.filename??>
+                        <img src="/img/${message.filename}" class="card-img-top">
+                    </#if>
+                    <div class="m-2">
+                        <span>${message.text}</span>
+                        <i>${message.tag}</i>
+                    </div>
+                    <div class="card-footer">
+                        ${message.authorName}
+                    </div>
+                </div>
+            </#list>
+        </div>
+    </div>
+
 </@c.page>
