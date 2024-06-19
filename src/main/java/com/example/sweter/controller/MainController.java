@@ -7,15 +7,12 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 
 import java.io.File;
 import java.io.IOException;
@@ -29,14 +26,15 @@ public class MainController {
     @Value("${upload.path}")
     private String uploadPath;
     @GetMapping("/")
-    public String greeting(HttpSession session, Model model){
-        SecurityContext context = SecurityContextHolder.getContext();
-        session.setAttribute("SPRING_SECURITY_CONTEXT", context);
-        model.addAttribute("Session", session);
+    public String greeting(HttpSession session, Model model,@AuthenticationPrincipal User user){
+//        SecurityContext context = SecurityContextHolder.getContext();
+//        session.setAttribute("SPRING_SECURITY_CONTEXT", context);
+        model.addAttribute("username",user.getUsername());
+//        model.addAttribute("Session", session);
         return "greeting";
     }
     @GetMapping("/main")
-    public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model){
+    public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model,@AuthenticationPrincipal User user){
         Iterable<Message> messages;
 
         if (filter != null && !filter.isEmpty()){
@@ -44,6 +42,7 @@ public class MainController {
         } else {
             messages = messageRepository.findAll();
         }
+        model.addAttribute("username",user.getUsername());
         model.addAttribute("messages" , messages);
         model.addAttribute("filter", filter);
         return "main";

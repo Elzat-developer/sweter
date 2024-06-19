@@ -10,7 +10,7 @@
 
         <div class="collapse navbar-collapse p-2" id="navbarSupportedContent">
 
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
                 </li>
@@ -18,17 +18,24 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/main">Messages</a>
                 </li>
+                <#if isAdmin??>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user">User List</a>
+                    </li>
+                </#if>
+                <#if users??>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/profile">Profile</a>
+                    </li>
+                </#if>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/user">User List</a>
-                </li>
-
-
+                <!-- Выравниваем текст и кнопку выхода -->
+                <div class="d-flex align-items-center">
+                    <span class="navbar-text p-2 mr-3">${username!"unknown"}</span>
+                    <@l.logout/>
+                </div>
             </ul>
 
-<#--            <div class="navbar-text position-absolute top-10 end-0 p-2 mr-3">${name}</div>-->
-            <@l.logout/>
         </div>
-
     </div>
 </nav>

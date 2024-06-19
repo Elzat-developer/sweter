@@ -1,13 +1,21 @@
-<#assign known = Session?? && Session.SPRING_SECURITY_CONTEXT??>
+<#assign known = Session?? && Session["SPRING_SECURITY_CONTEXT"]??>
 <#if known>
     <#assign
-        user = Session.SPRING_SECURITY_CONTEXT.authentication.principal
-        name = user.getUsername()
-        isAdmin = user.isAdmin()
+    context = Session["SPRING_SECURITY_CONTEXT"]
+    authentication = context["authentication"]
+    principal = authentication["principal"]
+    name = principal["username"]
+    authorities = principal["authorities"]
+    isAdmin = false
     >
-<#else >
+    <#list authorities as authority>
+        <#if authority["authority"] == "ROLE_ADMIN">
+            <#assign isAdmin = true>
+        </#if>
+    </#list>
+<#else>
     <#assign
-        name = "unknown"
-        isAdmin = false
+    name = "unknown"
+    isAdmin = false
     >
 </#if>

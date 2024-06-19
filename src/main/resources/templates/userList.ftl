@@ -5,6 +5,7 @@
         <thred>
             <tr>
                 <th>Name</th>
+                <th></th>
                 <th>Role</th>
             </tr>
         </thred>
@@ -12,6 +13,7 @@
         <#list users as user>
             <tr>
                 <td>${user.username}</td>
+                <td></td>
                 <td><#list user.roles as role>${role}<#sep>, </#list></td>
                 <td><a href="/user/${user.id}">edit</a></td>
             </tr>
