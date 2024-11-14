@@ -18,16 +18,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/main">Messages</a>
                 </li>
-                <#if isAdmin??>
+<#--                <#if isAdmin??>-->
                     <li class="nav-item">
                         <a class="nav-link" href="/user">User List</a>
                     </li>
-                </#if>
-                <#if users??>
+<#--                </#if>-->
+
                     <li class="nav-item">
                         <a class="nav-link" href="/user/profile">Profile</a>
                     </li>
-                </#if>
+
 
                 <!-- Выравниваем текст и кнопку выхода -->
                 <div class="d-flex align-items-center">

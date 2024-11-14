@@ -11,6 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "messages")
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,8 +28,5 @@ public class Message {
         this.author = user;
         this.text = text;
         this.tag = tag;
-    }
-    public String getAuthorName(){
-        return author != null ? author.getUsername() : "<none>";
     }
 }

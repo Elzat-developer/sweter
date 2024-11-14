@@ -3,7 +3,6 @@ package com.example.sweter.controller;
 import com.example.sweter.model.Message;
 import com.example.sweter.model.User;
 import com.example.sweter.repository.MessageRepository;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -26,11 +25,8 @@ public class MainController {
     @Value("${upload.path}")
     private String uploadPath;
     @GetMapping("/")
-    public String greeting(HttpSession session, Model model,@AuthenticationPrincipal User user){
-//        SecurityContext context = SecurityContextHolder.getContext();
-//        session.setAttribute("SPRING_SECURITY_CONTEXT", context);
+    public String greeting(Model model,@AuthenticationPrincipal User user){
         model.addAttribute("username",user.getUsername());
-//        model.addAttribute("Session", session);
         return "greeting";
     }
     @GetMapping("/main")
