@@ -14,14 +14,26 @@
         Add new message
     </a>
 
-    <div class="collapse" id="collapseExample">
+    <div class="collapse <#if message??>show</#if>" id="collapseExample">
         <div class="mb-3 mt-3">
             <form method="post" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <input type="text" class="form-control" name="text" placeholder="Enter your message(English)">
+                        <input type="text" class="form-control ${(textError??)?string('is-invalid', '')}"
+                               value="<#if message??> ${message.text}</#if>" name="text" placeholder="Enter your message(English)">
+                        <#if textError??>
+                        <div class="invalid-feedback">
+                            ${textError}
+                        </div>
+                        </#if>
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control"name="tag" placeholder="Tag">
+                        <input type="text" class="form-control"
+                               value="<#if message??> ${message.tag}</#if>" name="tag" placeholder="Tag">
+                        <#if tagError??>
+                            <div class="invalid-feedback">
+                                ${tagError}
+                            </div>
+                        </#if>
                     </div>
                     <div>
                         <input type="file" class="form-control" name="file" id="formFile">
@@ -61,7 +73,11 @@
                         <i>${message.tag}</i>
                     </div>
                     <div class="card-footer">
-                        ${message.authorName}
+                        <#if message.author??>
+                            ${message.author}
+                        <#else>
+                            Автор неизвестен
+                        </#if>
                     </div>
                 </div>
             </#list>
@@ -78,7 +94,11 @@
                         <i>${message.tag}</i>
                     </div>
                     <div class="card-footer">
-                        ${message.authorName}
+                        <#if message.author??>
+                            ${message.author}
+                        <#else>
+                            Автор неизвестен
+                        </#if>
                     </div>
                 </div>
             </#list>
@@ -95,7 +115,11 @@
                         <i>${message.tag}</i>
                     </div>
                     <div class="card-footer">
-                        ${message.authorName}
+                        <#if message.author??>
+                            ${message.author}
+                        <#else>
+                            Автор неизвестен
+                        </#if>
                     </div>
                 </div>
             </#list>

@@ -2,19 +2,48 @@
   <form action="${path}" method="post">
     <div class="mb-3">
       <label class="form-label"> User Name :
-        <input type="text" name="username" class="form-control"/>
+        <input type="text" name="username" value="<#if user??>${user.username}</#if>"
+               class="form-control ${(usernameError??)?string('is-invalid', '')}"/>
+        <#if usernameError??>
+          <div class="invalid-feedback">
+            ${usernameError}
+          </div>
+        </#if>
       </label>
     </div>
 
     <div class="mb-3">
       <label class="form-label"> Password:
-        <input type="password" name="password" class="form-control"/>
+        <input type="password" name="password"
+               class="form-control ${(passwordError??)?string('is-invalid', '')}"/>
+        <#if passwordError??>
+          <div class="invalid-feedback">
+            ${passwordError}
+          </div>
+        </#if>
       </label>
     </div>
     <#if isRegisterForm>
+      <div class="mb-3">
+        <label class="form-label"> Password2:
+          <input type="password" name="password2"
+                 class="form-control ${(password2Error??)?string('is-invalid', '')}"/>
+          <#if password2Error??>
+            <div class="invalid-feedback">
+              ${password2Error}
+            </div>
+          </#if>
+        </label>
+      </div>
     <div class="mb-3">
       <label class="form-label"> Email:
-        <input type="email" name="email" class="form-control"/>
+        <input type="email" name="email" value="<#if user??>${user.email}</#if>"
+               class="form-control ${(emailError??)?string('is-invalid', '')}"/>
+        <#if emailError??>
+          <div class="invalid-feedback">
+            ${emailError}
+          </div>
+        </#if>
       </label>
     </div>
     </#if>

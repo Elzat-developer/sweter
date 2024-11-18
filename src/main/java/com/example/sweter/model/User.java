@@ -2,6 +2,9 @@ package com.example.sweter.model;
 
 import com.example.sweter.model.role.Role;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,13 +21,17 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    @Column(name = "username")
+    @NotEmpty(message = "Username cannot be empty")
     private String username;
-//    @Column(name = "password")
+    @NotEmpty(message = "Password cannot be empty")
     private String password;
+    @Transient
+    @NotBlank(message = "Password confirmation cannot be empty")
+    private String password2;
  //   @Column(name = "active")
     private boolean active;
-
+    @Email(message = "Email is not correct")
+    @NotBlank(message = "Email cannot be empty")
     private String email;
     private String activationCode;
 
@@ -41,11 +48,6 @@ public class User implements UserDetails {
 
     public User() {
 
-    }
-
-    //   Проверка пользвателья на наличие роли АДМИН
-    private boolean isAdmin(){
-        return roles.contains(Role.ADMIN);
     }
 
     @Override
