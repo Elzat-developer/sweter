@@ -4,7 +4,6 @@ import com.example.sweter.model.role.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,14 +20,11 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty(message = "Username cannot be empty")
+    @NotBlank(message = "Username cannot be empty")
     private String username;
-    @NotEmpty(message = "Password cannot be empty")
+    @NotBlank(message = "Password cannot be empty")
     private String password;
-    @Transient
-    @NotBlank(message = "Password confirmation cannot be empty")
-    private String password2;
- //   @Column(name = "active")
+
     private boolean active;
     @Email(message = "Email is not correct")
     @NotBlank(message = "Email cannot be empty")
@@ -57,17 +53,17 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true; //UserDetails.super.isAccountNonExpired()
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;//UserDetails.super.isAccountNonLocked()
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;//UserDetails.super.isCredentialsNonExpired()
+        return true;
     }
 
     @Override
