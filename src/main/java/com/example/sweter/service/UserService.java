@@ -4,6 +4,7 @@ import com.example.sweter.model.User;
 import com.example.sweter.model.role.Role;
 import com.example.sweter.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,6 +23,8 @@ public class UserService implements UserDetailsService {
     private MailSenderService mailSenderService;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Value("${hostname}")
+    private String hostname;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
@@ -49,8 +52,9 @@ public class UserService implements UserDetailsService {
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
                     "Hello %s! \n" +
-                            "Welcome to Sweter. Please, visit next link: http://localhost:8080/activate/%s",
+                            "Welcome to Sweter. Please, visit next link: http://%s/activate/%s",
                     user.getUsername(),  // Первый аргумент для %s
+                    hostname,
                     user.getActivationCode()  // Второй аргумент для %s
             );
             mailSenderService.send(user.getEmail(), "Activation code", message);

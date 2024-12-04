@@ -36,6 +36,9 @@ dependencies {
 
     implementation 'org.springframework.session:spring-session-jdbc'
 
+//   JAXB
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.2'
+
     testImplementation 'org.springframework.security:spring-security-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
