@@ -5,13 +5,13 @@
         <div class="col-12">
             <form method="get" action="/main" >
                 <input  type="text" name="filter" value="${filter?if_exists}">
-                <button type="submit" class="btn btn-primary">find</button>
+                <button type="submit" class="btn btn-primary">іздеу</button>
             </form>
         </div>
     </div>
 
     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Add new message
+        Жаңа құрылғыны қосу
     </a>
 
     <div class="collapse <#if message??>show</#if>" id="collapseExample">
@@ -19,7 +19,7 @@
             <form method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <input type="text" class="form-control ${(textError??)?string('is-invalid', '')}"
-                               value="<#if message??> ${message.text}</#if>" name="text" placeholder="Enter your message(English)">
+                               value="<#if message??> ${message.text}</#if>" name="text" placeholder="Құрылғының аты(English)">
                         <#if textError??>
                         <div class="invalid-feedback">
                             ${textError}
@@ -28,7 +28,7 @@
                     </div>
                     <div class="mb-3">
                         <input type="text" class="form-control"
-                               value="<#if message??> ${message.tag}</#if>" name="tag" placeholder="Tag">
+                               value="<#if message??> ${message.tag}</#if>" name="tag" placeholder="Кілт сөз">
                         <#if tagError??>
                             <div class="invalid-feedback">
                                 ${tagError}
@@ -41,7 +41,7 @@
                     </div>
                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                      <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">Action</button>
+                        <button type="submit" class="btn btn-primary">Қосу</button>
                     </div>
             </form>
         </div>

@@ -12,26 +12,26 @@
 
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/">Басты бет</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/main">Messages</a>
+                    <a class="nav-link" href="/main">Құрылғылар</a>
                 </li>
 <#--                <#if isAdmin??>-->
                     <li class="nav-item">
-                        <a class="nav-link" href="/user">User List</a>
+                        <a class="nav-link" href="/user">Қолданушылар тізімі</a>
                     </li>
 <#--                </#if>-->
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/user/profile">Profile</a>
+                        <a class="nav-link" href="/user/profile">Жеке кабинет</a>
                     </li>
 
 
                 <!-- Выравниваем текст и кнопку выхода -->
                 <div class="d-flex align-items-center">
-                    <span class="navbar-text p-2 mr-3">${username!"unknown"}</span>
+                    <span class="navbar-text p-2 mr-3">${username!"Кірілмеген"}</span>
                     <@l.logout/>
                 </div>
             </ul>

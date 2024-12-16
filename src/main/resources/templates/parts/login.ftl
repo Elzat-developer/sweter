@@ -1,7 +1,7 @@
 <#macro login path isRegisterForm>
   <form action="${path}" method="post">
     <div class="mb-3">
-      <label class="form-label"> User Name :
+      <label class="form-label"> Қолданушы аты :
         <input type="text" name="username" value="<#if user??>${user.username}</#if>"
                class="form-control ${(usernameError??)?string('is-invalid', '')}"/>
         <#if usernameError??>
@@ -13,7 +13,7 @@
     </div>
 
     <div class="mb-3">
-      <label class="form-label"> Password:
+      <label class="form-label"> Құпия сөз:
         <input type="password" name="password"
                class="form-control ${(passwordError??)?string('is-invalid', '')}"/>
         <#if passwordError??>
@@ -25,7 +25,7 @@
     </div>
     <#if isRegisterForm>
       <div class="mb-3">
-        <label class="form-label"> Password2:
+        <label class="form-label"> Құпия сөзді қайталаңыз:
           <input type="password" name="password2"
                  class="form-control ${(password2Error??)?string('is-invalid', '')}"/>
           <#if password2Error??>
@@ -58,11 +58,11 @@
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
 
     <div>
-      <button type="submit" class="btn btn-primary"><#if isRegisterForm>Create<#else>Sign In</#if></button>
+      <button type="submit" class="btn btn-primary"><#if isRegisterForm>Жасау<#else>Кіру</#if></button>
     </div>
 
     <div class="pt-2">
-      <#if !isRegisterForm><a href="/registration">Add new User</a></#if>
+      <#if !isRegisterForm><a href="/registration">Жаңа қолданушыны ашу</a></#if>
     </div>
 
   </form>
@@ -71,6 +71,6 @@
 <#macro logout>
   <form action="/logout" method="post">
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-    <button class="btn btn-primary position-absolute top-0 end-0 m-3" type="submit">Sign Out</button>
+    <button class="btn btn-primary position-absolute top-0 end-0 m-3" type="submit">Шығу</button>
   </form>
 </#macro>

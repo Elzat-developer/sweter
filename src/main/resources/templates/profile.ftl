@@ -4,7 +4,7 @@
     ${message?if_exists}
     <form method="post">
             <div class="mb-3">
-                <label class="form-label"> Password:
+                <label class="form-label"> Құпиясөзді өзгерту:
                     <input type="password" name="password" class="form-control"/>
                 </label>
             </div>
@@ -18,7 +18,7 @@
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
 
             <div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Сақтау</button>
             </div>
 
     </form>

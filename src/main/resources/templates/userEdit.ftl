@@ -1,6 +1,6 @@
 <#import "parts/common.ftl" as c>
 <@c.page>
-    User Editor
+    Қолданушыларды басқарау панелі
     <form action="/user" method="post">
         <input type="text" name="username" value="${user.username}">
         <#list roles as role>
@@ -12,7 +12,7 @@
             </div>
         </#list>
         <input type="hidden" value="${user.id}" name="userId">
-        <button type="submit">Save</button>
+        <button type="submit">Сақтау</button>
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
     </form>
 </@c.page>
