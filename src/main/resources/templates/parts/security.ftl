@@ -7,6 +7,7 @@
     name = principal["username"]
     authorities = principal["authorities"]
     isAdmin = false
+    currentUserId = principal["currentUserId"]
     >
     <#list authorities as authority>
         <#if authority["authority"] == "ROLE_ADMIN">
@@ -17,5 +18,6 @@
     <#assign
     name = "unknown"
     isAdmin = false
+    currentUserId = -1
     >
 </#if>
