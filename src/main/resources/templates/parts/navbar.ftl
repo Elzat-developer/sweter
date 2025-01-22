@@ -27,7 +27,7 @@
                     </li>
                 <!-- Выравниваем текст и кнопку выхода -->
                 <div class="d-flex align-items-center">
-                    <span class="navbar-text p-2 mr-3">${username!"unknown"}</span>
+                    <span class="navbar-text p-2 mr-3">${username!"Please, login"}</span>
                     <@l.logout/>
                 </div>
             </ul>
