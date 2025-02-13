@@ -13,6 +13,7 @@
                         ${textError}
                     </div>
                 </#if>
+                </input>
             </div>
             <div class="mb-3">
                 <input type="text" class="form-control"
@@ -22,10 +23,12 @@
                         ${tagError}
                     </div>
                 </#if>
+                </input>
             </div>
             <div>
                 <input type="file" class="form-control" name="file" id="formFile">
                 <label for="formFile" class="form-label"></label>
+                </input>
             </div>
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
             <input type="hidden" name="id" value="<#if message??> ${message.id}</#if>"/>

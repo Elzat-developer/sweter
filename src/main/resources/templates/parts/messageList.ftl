@@ -1,5 +1,5 @@
 <#include "security.ftl">
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-3 g-4" id="message-list">
     <#assign column1 = []>
     <#assign column2 = []>
     <#assign column3 = []>
@@ -16,12 +16,12 @@
 
     <div class="col">
         <#list column1 as message>
-            <div class="card my-3" style="width: 18rem;">
+            <div class="card my-3" style="width: 18rem;" data-id="${message.id}">
                 <#if message.filename??>
-                    <img src="/img/${message.filename}" class="card-img-top">
+                    <img src="/img/${message.filename}" class="card-img-top"/>
                 </#if>
                 <div class="m-2">
-                    <span>${message.text}</span><br>
+                    <span>${message.text}</span><br/>
                     <i>#${message.tag}</i>
                 </div>
                 <div class="card-footer">
@@ -42,12 +42,12 @@
 
     <div class="col">
         <#list column2 as message>
-            <div class="card my-3" style="width: 18rem;">
+            <div class="card my-3" style="width: 18rem;" data-id="${message.id}">
                 <#if message.filename??>
-                    <img src="/img/${message.filename}" class="card-img-top">
+                    <img src="/img/${message.filename}" class="card-img-top"/>
                 </#if>
                 <div class="m-2">
-                    <span>${message.text}</span><br>
+                    <span>${message.text}</span><br/>
                     <i>#${message.tag}</i>
                 </div>
                 <div class="card-footer">
@@ -68,12 +68,12 @@
 
     <div class="col">
         <#list column3 as message>
-            <div class="card my-3" style="width: 18rem;">
+            <div class="card my-3" style="width: 18rem;" data-id="${message.id}">
                 <#if message.filename??>
-                    <img src="/img/${message.filename}" class="card-img-top">
+                    <img src="/img/${message.filename}" class="card-img-top"/>
                 </#if>
                 <div class="m-2">
-                    <span>${message.text}</span><br>
+                    <span>${message.text}</span><br/>
                     <i>#${message.tag}</i>
                 </div>
                 <div class="card-footer">

@@ -3,7 +3,7 @@
     <div class="mb-3">
       <label class="form-label"> User Name :
         <input type="text" name="username" value="<#if user??>${user.username}</#if>"
-               class="form-control ${(usernameError??)?string('is-invalid', '')}"/>
+               class="form-control ${(usernameError??)?string('is-invalid', '')}"></input>
         <#if usernameError??>
           <div class="invalid-feedback">
             ${usernameError}
@@ -15,7 +15,7 @@
     <div class="mb-3">
       <label class="form-label"> Password:
         <input type="password" name="password"
-               class="form-control ${(passwordError??)?string('is-invalid', '')}"/>
+               class="form-control ${(passwordError??)?string('is-invalid', '')}"></input>
         <#if passwordError??>
           <div class="invalid-feedback">
             ${passwordError}
@@ -27,7 +27,7 @@
       <div class="mb-3">
         <label class="form-label"> Password2:
           <input type="password" name="password2"
-                 class="form-control ${(password2Error??)?string('is-invalid', '')}"/>
+                 class="form-control ${(password2Error??)?string('is-invalid', '')}"></input>
           <#if password2Error??>
             <div class="invalid-feedback">
               ${password2Error}
@@ -38,7 +38,7 @@
     <div class="mb-3">
       <label class="form-label"> Email:
         <input type="email" name="email" value="<#if user??>${user.email}</#if>"
-               class="form-control ${(emailError??)?string('is-invalid', '')}"/>
+               class="form-control ${(emailError??)?string('is-invalid', '')}"></input>
         <#if emailError??>
           <div class="invalid-feedback">
             ${emailError}

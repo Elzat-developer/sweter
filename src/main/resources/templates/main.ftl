@@ -4,7 +4,7 @@
     <div class="row g-3">
         <div class="col-12">
             <form method="get" action="/main" >
-                <input  type="text" name="filter" value="${filter?if_exists}">
+                <input  type="text" name="filter" value="${filter?if_exists}"/>
                 <button type="submit" class="btn btn-primary">find</button>
             </form>
         </div>
@@ -25,6 +25,7 @@
                             ${textError}
                         </div>
                         </#if>
+                        </input>
                     </div>
                     <div class="mb-3">
                         <input type="text" class="form-control"
@@ -34,10 +35,12 @@
                                 ${tagError}
                             </div>
                         </#if>
+                        </input>
                     </div>
                     <div>
                         <input type="file" class="form-control" name="file" id="formFile">
                         <label for="formFile" class="form-label"></label>
+                        </input>
                     </div>
                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                      <div class="mb-3">
