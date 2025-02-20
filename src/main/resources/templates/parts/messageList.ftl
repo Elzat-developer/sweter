@@ -1,10 +1,11 @@
 <#include "security.ftl">
+<#import "pager.ftl" as p>
+<@p.pager url page />
 <div class="row row-cols-1 row-cols-md-3 g-4" id="message-list">
     <#assign column1 = []>
     <#assign column2 = []>
     <#assign column3 = []>
-
-    <#list messages as message>
+    <#list page.content as message>
         <#if message_index % 3 == 0>
             <#assign column1 = column1 + [message]>
         <#elseif message_index % 3 == 1>
@@ -92,3 +93,4 @@
         </#list>
     </div>
 </div>
+<@p.pager url page />
